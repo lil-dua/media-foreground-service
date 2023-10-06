@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Assignment 6</string>
+    <string name="_00_00">00:00</string>
+    <string name="now_playing">now playing</string>
+    <string name="song_name">Song name</string>
+    <string name="singer">Singer</string>
+</resources>
