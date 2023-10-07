@@ -67,7 +67,7 @@ class PlayFragment: Fragment() {
     }
 
     private fun initializeMediaPlayer(song: Song) {
-        startMusicService()
+        startMusicService(song)
         mediaPlayer = MediaPlayer.create(requireContext(),song.linkMp3)
         mediaPlayer?.start()
         mediaPlayer?.setOnCompletionListener {
@@ -77,12 +77,10 @@ class PlayFragment: Fragment() {
         }
     }
 
-
     override fun onDestroyView() {
         super.onDestroyView()
         binding = null
     }
-
 
     //on play click -----------------------------------------------------------------
     private fun handlePlayButton(){
@@ -97,7 +95,8 @@ class PlayFragment: Fragment() {
         }
     }
 
-    private fun startMusicService() {
+    private fun startMusicService(song: Song) {
+        MusicService.startService(requireContext(),song)
         val serviceIntent = Intent(requireContext(), MusicService::class.java)
         requireActivity().startService(serviceIntent)
     }
@@ -106,6 +105,4 @@ class PlayFragment: Fragment() {
         val stopIntent = Intent(requireContext(), MusicService::class.java)
         requireActivity().stopService(stopIntent)
     }
-
-
 }
